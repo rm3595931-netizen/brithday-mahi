@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Mahi 🎂</title>
+<style>
+  /* ===== Body & Background ===== */
+  body {
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* ===== Balloons ===== */
+  .balloon {
+    position: absolute;
+    width: 50px;
+    height: 70px;
+    border-radius: 50% 50% 50% 50%;
+    cursor: pointer;
+    animation: float 6s linear infinite;
+  }
+  .balloon:nth-child(1) { background: radial-gradient(circle at 30% 30%, #ff69b4, #ff1493); left:10%; animation-delay:0s; }
+  .balloon:nth-child(2) { background: radial-gradient(circle at 30% 30%, #1e90ff, #00bfff); left:25%; animation-delay:1s; }
+  .balloon:nth-child(3) { background: radial-gradient(circle at 30% 30%, #32cd32, #00fa9a); left:40%; animation-delay:2s; }
+  .balloon:nth-child(4) { background: radial-gradient(circle at 30% 30%, #ffa500, #ff4500); left:60%; animation-delay:1.5s; }
+  .balloon:nth-child(5) { background: radial-gradient(circle at 30% 30%, #ffff00, #ffd700); left:75%; animation-delay:2.5s; }
+  .balloon:nth-child(6) { background: radial-gradient(circle at 30% 30%, #ff69b4, #ff1493); left:90%; animation-delay:0.5s; }
+
+  @keyframes float {
+    0% { transform: translateY(100vh) translateX(0); }
+    50% { transform: translateY(50vh) translateX(20px); }
+    100% { transform: translateY(-100vh) translateX(-10px); }
+  }
+
+  .balloon.pop {
+    animation: pop 0.5s forwards;
+  }
+  @keyframes pop {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+  }
+
+  /* ===== Confetti ===== */
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    opacity: 0.9;
+    border-radius: 50%;
+    animation: confettiFall 3s linear infinite;
+  }
+  @keyframes confettiFall {
+    0% { transform: translateY(-10px) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(360deg); }
+  }
+
+  /* ===== Card ===== */
+  .card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493;
+    text-align: center;
+    color: #fff;
+    z-index: 10;
+    max-width: 600px;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  @keyframes glow {
+    0% { box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493; }
+    100% { box-shadow: 0 0 40px #ff69b4, 0 0 80px #ff1493; }
+  }
+
+  h1 {
+    font-size: 3em;
+    text-shadow: 2px 2px 10px #fff, 0 0 20px #ff69b4;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    line-height: 1.6em;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 15px 30px;
+    background: #ff69b4;
+    color: white;
+    font-weight: bold;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  .button:hover {
+    background: #ff1493;
+  }
+</style>
+</head>
+<body>
+
+<!-- Balloons -->
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+
+<!-- Card -->
+<div class="card">
+  <h1>🎂 Happy Birthday Mahi 🎂</h1>
+  <p>
+    You're the melody that makes every heart smile, the sparkle that brightens every moment.  
+    <br><br>
+    🌹 **Shayari for You:** 🌹  
+    Roses are red, violets are blue,  
+    My heart races every time I see you! 😉  
+    <br>
+    Sweets and laughter, smiles so bright,  
+    Today your birthday shines like a light! ✨  
+    <br>
+    Cupcakes, candles, and pink skies above,  
+    Sending you today all my laughter and love! 💖  
+    <br><br>
+    "RAJA"
+  </p>
+  <a href="https://youtube.com/shorts/QG3hrB13XCY?si=SN9Ts7Dyw1cCxolI" class="button" target="_blank">Watch Your Video 🎉</a>
+</div>
+
+<!-- Confetti Container -->
+<div id="confettiContainer"></div>
+
+<script>
+  // ===== Confetti Generator =====
+  const confettiContainer = document.getElementById('confettiContainer');
+  for(let i=0; i<100; i++){
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.left = Math.random()*100 + 'vw';
+    confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 50%)`;
+    confetti.style.animationDelay = Math.random()*3 + 's';
+    confetti.style.width = confetti.style.height = Math.random()*10 + 5 + 'px';
+    confettiContainer.appendChild(confetti);
+  }
+
+  // ===== Balloon Pop =====
+  document.querySelectorAll('.balloon').forEach(b => {
+    b.addEventListener('click', () => {
+      b.classList.add('pop');
+    });
+  });
+</script>
+
+</body>
+</html>
